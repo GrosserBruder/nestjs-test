@@ -1,8 +1,10 @@
 import { Module } from "@nestjs/common";
 import { AppService } from "./AppService";
 
+const providers = [AppService]
+
 @Module({
-  providers: [AppService],
-  exports: [AppService]
+  providers,
+  exports: providers
 })
 export class ServicesModule { }
