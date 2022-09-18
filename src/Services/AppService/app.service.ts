@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { BaseCrudService } from '../BaseCrudService';
+import { BaseCrudService } from '../base-crud-service.service';
 
 @Injectable()
 export class AppService extends BaseCrudService {

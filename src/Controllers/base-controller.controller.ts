@@ -1,5 +1,5 @@
 import { Get, Post, Put, Delete, Param } from "@nestjs/common";
-import { BaseCrudService } from "src/Services/BaseCrudService";
+import { BaseCrudService } from "src/Services/base-crud-service.service";
 
 export class BaseController {
   constructor(private readonly service: BaseCrudService) { }
