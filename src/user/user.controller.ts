@@ -1,32 +1,36 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from "@nestjs/common";
+import { ApiTags } from "@nestjs/swagger";
+import { CreateUserDto } from "./dto/create-user.dto";
+import { UpdateUserDto } from "./dto/update-user.dto";
 import { UserService } from "./user.service";
 
+@ApiTags("user")
 @Controller("user")
 export class UserController {
   constructor(private readonly userService: UserService) { }
 
   @Get()
-  async getAll() {
+  getAll() {
     return this.userService.getAll();
   }
 
   @Get(":id")
-  async get(id: string) {
+  get(id: number) {
     return this.userService.get(id);
   }
 
   @Post()
-  async create(@Body() createDto: any) {
-    this.userService.create(createDto);
+  create(@Body() createDto: CreateUserDto) {
+    return this.userService.create(createDto);
   }
 
   @Put(":id")
-  async update(@Param("id") id: string, @Body() updateDto: any) {
-    this.userService.update(id, updateDto);
+  update(@Param("id", ParseIntPipe) id: number, @Body() updateDto: UpdateUserDto) {
+    return this.userService.update(id, updateDto);
   }
 
   @Delete(":id")
-  async remove(@Param(":id") id: string) {
-    this.userService.remove(id);
+  remove(@Param(":id", ParseIntPipe) id: number) {
+    return this.userService.remove(id);
   }
 }
