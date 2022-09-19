@@ -1,0 +1,33 @@
+import { DhlTypeEntity } from './entity/dhl-type.entity';
+import { Injectable } from "@nestjs/common";
+import { CreateDhlTypeDto } from "./dto/create-dhl-type.dto";
+import { UpdateDhlTypeDto } from "./dto/update-dhl-type.dto";
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+
+@Injectable()
+export class DhlService {
+  constructor(@InjectRepository(DhlTypeEntity) private readonly dhlRepository: Repository<DhlTypeEntity>) { }
+
+  getAll() {
+    return this.dhlRepository.find();
+  }
+
+  get(id: number) {
+    return this.dhlRepository.findOneBy({
+      id
+    });
+  }
+
+  create(createDto: CreateDhlTypeDto) {
+    return this.dhlRepository.save(createDto)
+  }
+
+  update(id: number, updateDto: UpdateDhlTypeDto) {
+    return this.dhlRepository.update(id, updateDto);
+  }
+
+  remove(id: number) {
+    return this.dhlRepository.delete(id);
+  }
+}

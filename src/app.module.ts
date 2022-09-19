@@ -1,3 +1,4 @@
+import { DhlModule } from './dhlTypes/dhl-type.module';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -6,7 +7,6 @@ import { } from "sqlite3"
 
 @Module({
   imports: [
-    UserModule,
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: [
@@ -28,7 +28,9 @@ import { } from "sqlite3"
         }
       },
       inject: [ConfigService]
-    })
+    }),
+    UserModule,
+    DhlModule,
   ],
 })
 export class AppModule { }
