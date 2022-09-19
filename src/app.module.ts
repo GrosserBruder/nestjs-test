@@ -1,15 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ControllersModule } from './Controllers';
-import { ServicesModule } from './Services/services.module';
 import { UserModule } from './user/user.module';
 import { } from "sqlite3"
 
 @Module({
   imports: [
-    ServicesModule,
-    ControllersModule,
     UserModule,
     ConfigModule.forRoot({
       isGlobal: true,
