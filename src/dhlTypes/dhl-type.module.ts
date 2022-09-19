@@ -9,4 +9,4 @@ import { DhlTypeService } from "./dhl-type.service";
   controllers: [DhlTypeController],
   providers: [DhlTypeService],
 })
-export class DhlModule { }
+export class DhlTypeModule { }

@@ -1,9 +1,8 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity } from "src/common/base.entity";
+import { Column, Entity } from "typeorm";
 
 @Entity()
-export class UserEntity {
-  @PrimaryGeneratedColumn()
-  readonly id: number
+export class UserEntity extends BaseEntity {
   @Column()
   readonly firstName: string
   @Column()
@@ -12,6 +11,4 @@ export class UserEntity {
   readonly middleName: string
   @Column()
   readonly email: string
-  @CreateDateColumn()
-  readonly createdAt: string
 }

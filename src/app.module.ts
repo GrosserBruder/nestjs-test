@@ -1,9 +1,10 @@
-import { DhlModule } from './dhlTypes/dhl-type.module';
+import { DhlTypeModule } from './dhlTypes/dhl-type.module';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { } from "sqlite3"
+import { DhlModule } from './dhl/dhl.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { } from "sqlite3"
       inject: [ConfigService]
     }),
     UserModule,
+    DhlTypeModule,
     DhlModule,
   ],
 })
