@@ -6,7 +6,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 @Injectable()
-export class DhlService {
+export class DhlTypeService {
   constructor(@InjectRepository(DhlTypeEntity) private readonly dhlRepository: Repository<DhlTypeEntity>) { }
 
   getAll() {
