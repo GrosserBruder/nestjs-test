@@ -14,8 +14,8 @@ export class UserController {
     return this.userService.getAll();
   }
 
-  @Get(":id")
-  get(id: number) {
+  @Get(":id",)
+  get(@Param("id", ParseIntPipe) id: number) {
     return this.userService.get(id);
   }
 
@@ -30,7 +30,7 @@ export class UserController {
   }
 
   @Delete(":id")
-  remove(@Param(":id", ParseIntPipe) id: number) {
+  remove(@Param("id", ParseIntPipe) id: number) {
     return this.userService.remove(id);
   }
 }

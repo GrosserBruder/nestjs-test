@@ -1,9 +1,17 @@
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+
+@Entity()
 export class UserEntity {
-  constructor(
-    readonly id: number,
-    readonly firstName: string,
-    readonly lastName: string,
-    readonly middleName: string,
-    readonly email: string,
-  ) { }
+  @PrimaryGeneratedColumn()
+  readonly id: number
+  @Column()
+  readonly firstName: string
+  @Column()
+  readonly lastName: string
+  @Column()
+  readonly middleName: string
+  @Column()
+  readonly email: string
+  @CreateDateColumn()
+  readonly createdAt: string
 }
