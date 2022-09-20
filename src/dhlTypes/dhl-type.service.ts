@@ -3,7 +3,7 @@ import { Injectable } from "@nestjs/common";
 import { CreateDhlTypeDto } from "./dto/create-dhl-type.dto";
 import { UpdateDhlTypeDto } from "./dto/update-dhl-type.dto";
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, UsingJoinColumnIsNotAllowedError } from 'typeorm';
 
 @Injectable()
 export class DhlTypeService {
@@ -24,7 +24,10 @@ export class DhlTypeService {
   }
 
   update(id: number, updateDto: UpdateDhlTypeDto) {
-    return this.dhlRepository.update(id, updateDto);
+    return this.dhlRepository.update(id, updateDto)
+      .then(() => {
+        return this.dhlRepository.findOneBy({ id })
+      });
   }
 
   remove(id: number) {

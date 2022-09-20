@@ -9,6 +9,7 @@ async function bootstrap() {
     .setTitle("Test NestApi")
     .build()
 
+  app.enableCors()
   app.setGlobalPrefix("api/v1")
 
   const swaggerDocument = SwaggerModule.createDocument(app, swaggerConfig)
