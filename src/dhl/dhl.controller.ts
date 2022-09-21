@@ -31,6 +31,7 @@ export class DhlController {
 
   @Delete(":id")
   remove(@Param("id", ParseIntPipe) id: number) {
-    return this.dhlService.remove(id);
+    this.dhlService.remove(id);
+    return
   }
 }

@@ -50,7 +50,10 @@ export class DhlService {
     dhlEntity.name = updateDto.name
     dhlEntity.type = type
 
-    return this.dhlRepository.update({ id }, dhlEntity);
+    return this.dhlRepository.update({ id }, dhlEntity)
+      .then(() => {
+        return this.dhlRepository.findOneBy({ id })
+      });
   }
 
   async remove(id: number) {

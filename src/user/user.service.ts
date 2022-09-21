@@ -24,7 +24,10 @@ export class UserService {
   }
 
   update(id: number, updateDto: UpdateUserDto) {
-    return this.userRepository.update(id, updateDto);
+    return this.userRepository.update(id, updateDto)
+      .then(() => {
+        return this.userRepository.findOneBy({ id })
+      });
   }
 
   remove(id: number) {
