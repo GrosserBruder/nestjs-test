@@ -5,6 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { } from "sqlite3"
 import { DhlModule } from './dhl/dhl.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -29,6 +31,9 @@ import { DhlModule } from './dhl/dhl.module';
         }
       },
       inject: [ConfigService]
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'static')
     }),
     UserModule,
     DhlTypeModule,
