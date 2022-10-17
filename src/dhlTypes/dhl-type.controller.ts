@@ -1,9 +1,8 @@
-import { Body, Controller, Delete, Get, HttpStatus, Param, ParseIntPipe, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
+import { DhlTypeService } from "./dhl-type.service";
 import { CreateDhlTypeDto } from "./dto/create-dhl-type.dto";
 import { UpdateDhlTypeDto } from "./dto/update-dhl-type.dto";
-import { DhlTypeService } from "./dhl-type.service";
-import { Response } from "express";
 
 @ApiTags("dhl-type")
 @Controller("dhl-type")
