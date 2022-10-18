@@ -2,11 +2,7 @@ import { ApiProperty } from "@nestjs/swagger";
 
 export class UpdateDhlSettingsDto {
   @ApiProperty()
-  readonly param1: string
-  @ApiProperty()
-  readonly param2: string
-  @ApiProperty()
-  readonly param3: string
+  readonly name: string
   @ApiProperty()
   readonly typeId: number
 }

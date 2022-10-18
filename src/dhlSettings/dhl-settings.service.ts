@@ -29,9 +29,7 @@ export class DhlSettingsService extends BaseService<DhlSettingsEntity> {
 
     const dhlEntity = new DhlSettingsEntity()
 
-    dhlEntity.param1 = createDto.param1
-    dhlEntity.param2 = createDto.param2
-    dhlEntity.param3 = createDto.param3
+    dhlEntity.name = createDto.name
     dhlEntity.type = type
 
     return super.create(dhlEntity)
@@ -41,9 +39,7 @@ export class DhlSettingsService extends BaseService<DhlSettingsEntity> {
     const type = await this.dhlTypeRepository.findOneByOrFail({ id: updateDto.typeId })
     const dhlEntity = new DhlSettingsEntity()
 
-    dhlEntity.param1 = updateDto.param1
-    dhlEntity.param2 = updateDto.param2
-    dhlEntity.param3 = updateDto.param3
+    dhlEntity.name = updateDto.name
     dhlEntity.type = type
 
     return super.update(id, dhlEntity)

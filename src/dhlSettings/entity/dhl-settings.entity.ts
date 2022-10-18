@@ -5,11 +5,7 @@ import { DhlTypeEntity } from '../../dhlTypes/entity/dhl-type.entity';
 @Entity()
 export class DhlSettingsEntity extends BaseEntity {
   @Column()
-  param1: string
-  @Column()
-  param2: string
-  @Column()
-  param3: string
+  name: string
   @ManyToOne(() => DhlTypeEntity, (dhlTypeEntity) => dhlTypeEntity.defaultDhlTypeParams, {
     cascade: false
   })
