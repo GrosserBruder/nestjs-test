@@ -7,6 +7,8 @@ import { } from "sqlite3"
 import { DhlModule } from './dhl/dhl.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { DefaultDhlTypeParamsModule } from './defaultDhlTypeParams/defaultDhlTypeParams.module';
+import { TechnicalInspectionTypesModule } from './technicalInspectionTypes/technicalInspectionTypes.module';
 
 @Module({
   imports: [
@@ -38,6 +40,8 @@ import { join } from 'path';
     UserModule,
     DhlTypeModule,
     DhlModule,
+    DefaultDhlTypeParamsModule,
+    TechnicalInspectionTypesModule,
   ],
 })
 export class AppModule { }
