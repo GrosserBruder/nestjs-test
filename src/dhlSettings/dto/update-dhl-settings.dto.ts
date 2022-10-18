@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 
-export class createDefaultDhlTypeParams {
+export class UpdateDhlSettingsDto {
   @ApiProperty()
   readonly param1: string
   @ApiProperty()

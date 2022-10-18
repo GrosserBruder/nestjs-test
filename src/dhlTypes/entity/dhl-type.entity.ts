@@ -1,4 +1,4 @@
-import { DefaultDhlTypeParamsEntity } from "src/defaultDhlTypeParams/entity/defaultDhlTypeParams.entity";
+import { DhlSettingsEntity } from "src/dhlSettings/entity/dhl-settings.entity";
 import { Column, Entity, OneToMany } from "typeorm";
 import { BaseEntity } from './../../common/base.entity';
 import { DhlEntity } from './../../dhl/entity/dhl.entity';
@@ -14,5 +14,5 @@ export class DhlTypeEntity extends BaseEntity {
   @OneToMany(() => DhlEntity, (dhlEntity) => dhlEntity.type, {
     cascade: false,
   })
-  defaultDhlTypeParams: Array<DefaultDhlTypeParamsEntity>
+  defaultDhlTypeParams: Array<DhlSettingsEntity>
 }

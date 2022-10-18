@@ -3,20 +3,20 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { DhlTypeEntity } from 'src/dhlTypes/entity/dhl-type.entity';
 import { Repository } from 'typeorm';
 import { BaseService } from '../common/BaseService';
-import { createDefaultDhlTypeParams } from "./dto/createDefaultDhlTypeParams.dto";
-import { updateDefaultDhlTypeParams } from "./dto/updateDefaultDhlTypeParams.dto";
-import { DefaultDhlTypeParamsEntity } from './entity/defaultDhlTypeParams.entity';
+import { CreateDhlSettingsDto } from "./dto/create-dhl-settings.dto";
+import { UpdateDhlSettingsDto } from "./dto/update-dhl-settings.dto";
+import { DhlSettingsEntity } from './entity/dhl-settings.entity';
 
 @Injectable()
-export class DefaultDhlTypeParamsService extends BaseService<DefaultDhlTypeParamsEntity> {
+export class DhlSettingsService extends BaseService<DhlSettingsEntity> {
   constructor(
-    @InjectRepository(DefaultDhlTypeParamsEntity) private readonly dhlRepository: Repository<DefaultDhlTypeParamsEntity>,
+    @InjectRepository(DhlSettingsEntity) private readonly dhlRepository: Repository<DhlSettingsEntity>,
     @InjectRepository(DhlTypeEntity) private readonly dhlTypeRepository: Repository<DhlTypeEntity>,
   ) {
     super(dhlRepository)
   }
 
-  getAll(): Promise<DefaultDhlTypeParamsEntity[]> {
+  getAll(): Promise<DhlSettingsEntity[]> {
     return super.getAll({
       relations: {
         type: true
@@ -24,10 +24,10 @@ export class DefaultDhlTypeParamsService extends BaseService<DefaultDhlTypeParam
     })
   }
 
-  async create(createDto: createDefaultDhlTypeParams) {
+  async create(createDto: CreateDhlSettingsDto) {
     const type = await this.dhlTypeRepository.findOneByOrFail({ id: createDto.typeId })
 
-    const dhlEntity = new DefaultDhlTypeParamsEntity()
+    const dhlEntity = new DhlSettingsEntity()
 
     dhlEntity.param1 = createDto.param1
     dhlEntity.param2 = createDto.param2
@@ -37,9 +37,9 @@ export class DefaultDhlTypeParamsService extends BaseService<DefaultDhlTypeParam
     return super.create(dhlEntity)
   }
 
-  async update(id: number, updateDto: updateDefaultDhlTypeParams) {
+  async update(id: number, updateDto: UpdateDhlSettingsDto) {
     const type = await this.dhlTypeRepository.findOneByOrFail({ id: updateDto.typeId })
-    const dhlEntity = new DefaultDhlTypeParamsEntity()
+    const dhlEntity = new DhlSettingsEntity()
 
     dhlEntity.param1 = updateDto.param1
     dhlEntity.param2 = updateDto.param2
