@@ -1,14 +1,14 @@
-import { DhlTypeModule } from './dhlTypes/dhl-type.module';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserModule } from './user/user.module';
-import { } from "sqlite3"
-import { DhlModule } from './dhl/dhl.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
+import { DhlModule } from './dhl/dhl.module';
 import { DhlSettingsModule } from './dhlSettings/dhl-settings.module';
+import { DhlTypeModule } from './dhlTypes/dhl-type.module';
+import { SocketGatewayModule } from './socketGateway/socket.gateway.module';
 import { TechnicalInspectionTypesModule } from './technicalInspectionTypes/technicalInspectionTypes.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -42,6 +42,7 @@ import { TechnicalInspectionTypesModule } from './technicalInspectionTypes/techn
     DhlModule,
     DhlSettingsModule,
     TechnicalInspectionTypesModule,
+    SocketGatewayModule,
   ],
 })
 export class AppModule { }

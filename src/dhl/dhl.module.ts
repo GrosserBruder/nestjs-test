@@ -12,5 +12,6 @@ import { DhlTypeEntity } from 'src/dhlTypes/entity/dhl-type.entity';
   ],
   controllers: [DhlController],
   providers: [DhlService],
+  exports: [DhlService]
 })
 export class DhlModule { }
