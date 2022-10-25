@@ -21,7 +21,7 @@ export class SocketGateway implements OnGatewayConnection<Socket>, OnGatewayDisc
   }
 
   handleConnection(client: Socket, ...args: any[]) {
-    // this.intervalTimer = setInterval(this.sendRandomDhlsPosition, 1000)
+    this.intervalTimer = setInterval(this.sendRandomDhlsPosition.bind(this), 1000)
   }
 
   @SubscribeMessage('message')
@@ -31,7 +31,6 @@ export class SocketGateway implements OnGatewayConnection<Socket>, OnGatewayDisc
 
 
   async sendRandomDhlsPosition() {
-    console.log("this.dhlService", this.dhlService)
     return this.dhlService.getAll()
       .then((x) => x.map((dhl) => ({ dhl, x: 0, y: 0, })))
       .then((x) => {
